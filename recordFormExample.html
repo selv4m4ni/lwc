@@ -1,0 +1,154 @@
+<template>
+    <!-- <lightning-button variant="Neutral" label="Edit"
+    title="Open popup" onclick={showModalBox}>
+</lightning-button>-->
+
+    <template if:true={isShowModal}>
+        <div class="slds-p-bottom_large slds-p-left_large">
+            <lightning-record-edit-form id="recordEditForm" record-id={recordId} object-api-name="Contact"
+                onsuccess={handleSuccess}>
+                <lightning-messages></lightning-messages>
+                <h3 class="slds-section-title--divider">Top Section</h3>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <template if:true={arrayedit1}>
+                            <template for:each={arrayedit1} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-input-field field-name={fieldparam}>
+                                </lightning-input-field></p>
+                            </template>
+                        </template>
+
+                    </div>
+                    <div class="slds-col">
+                        <!--<h3 class="slds-section-title--divider">Second Section</h3>-->
+                        <template if:true={arrayedit2}>
+                            <template for:each={arrayedit2} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-input-field field-name={fieldparam}>
+                                </lightning-input-field></p>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+
+                <h3 class="slds-section-title--divider">Bottom Section</h3>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <template if:true={arrayedit3}>
+                            <template for:each={arrayedit3} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-input-field field-name={fieldparam}>
+                                </lightning-input-field></p>
+                            </template>
+                        </template>
+
+                    </div>
+                    <div class="slds-col">
+                        <template if:true={arrayedit4}>
+                            <template for:each={arrayedit4} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-input-field field-name={fieldparam}>
+                                </lightning-input-field></p>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+
+                <!--<div class="slds-clearfix slds-align_absolute-center " >-->
+                   <div class="slds-docked-form-footer stickyFooter bottomfooter">
+                    <lightning-button  variant="Neutral" label="Cancel" title="Open popup" onclick={hideModalBox}>
+                    </lightning-button>&nbsp;&nbsp;
+                    <lightning-button variant="brand" type="submit" label="Save" >
+    
+                    </lightning-button>
+                </div> 
+               <!-- </div>-->
+                
+            </lightning-record-edit-form>
+        </div>
+    </template>
+    <!-- Record Display -->
+    <template if:false={isShowModal}>
+        <div class="slds-p-bottom_large slds-p-left_large">
+            <lightning-record-view-form record-id={recordId} object-api-name="Contact">
+                <h3 class="slds-section-title--divider">Top Section
+                    <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="edit"
+                        onclick={showModalBox} class="slds-var-m-left_xxx-small" title="edit"></lightning-button-icon>
+                </h3>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+
+                        <!--<h3 class="slds-section-title--divider">First Section</h3>>
+                        <lightning-output-field field-name="Name">
+                        </lightning-output-field>
+                        <lightning-output-field field-name="Birthdate">
+                        </lightning-output-field>-->
+
+                        <template if:true={arrayview1}>
+                            <template for:each={arrayview1} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-output-field field-name={fieldparam}>
+                                </lightning-output-field></p>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="slds-col">
+                        <!--<h3 class="slds-section-title--divider">Second Section</h3>-->
+
+                        <template if:true={arrayview2}>
+                            <template for:each={arrayview2} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-output-field field-name={fieldparam}>
+                                </lightning-output-field></p>
+                            </template>
+                        </template>
+                        <!--
+                        <lightning-output-field field-name="Phone">
+                        </lightning-output-field>
+                        <lightning-output-field field-name="LeadSource">
+                        </lightning-output-field>-->
+                    </div>
+                </div>
+
+                <h3 class="slds-section-title--divider">Bottom Section
+
+                    <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="edit"
+                        onclick={showModalBox} class="slds-var-m-left_xxx-small" title="edit"></lightning-button-icon>
+                </h3>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+
+                        <template if:true={arrayview3}>
+                            <template for:each={arrayview3} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-output-field field-name={fieldparam}>
+                                </lightning-output-field></p>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="slds-col">
+                        
+                        <template if:true={arrayview4}>
+                            <template for:each={arrayview4} for:item="fieldparam">
+                                <p key={fieldparam}>
+                                <lightning-output-field field-name={fieldparam}>
+                                </lightning-output-field></p>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+
+            </lightning-record-view-form>
+
+            <!--<lightning-record-form
+record-id="003Dn000002AX4yIAG"
+object-api-name="Contact"
+layout-type="Full"
+columns="1"
+mode="readonly"
+>
+</lightning-record-form>-->
+        </div>
+    </template>
+</template>
